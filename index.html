@@ -489,7 +489,7 @@
                     if(files.length > 0) {
                         for(let i=0; i<files.length; i++) imgs.push(await app.compress(files[i], false));
                     }
-                    if(logoFile) logoUrl = await app.compress(logoFile, true);
+                    if(logoFile) logoUrl = await app.compress(logoFile, false);
                     if(ownerFile) ownerUrl = await app.compress(ownerFile, false);
 
                     // --- PAYMENT / CODE LOGIC ---
@@ -774,7 +774,7 @@
                 const file = document.getElementById("dashLogo").files[0];
                 if(!file) return app.msg("Select a file", "bad");
                 app.msg("Uploading...", "good");
-                const url = await app.compress(file, true);
+                const url = await app.compress(file, false);
                 await updateDoc(doc(app.db, "applications", id), { logo: url });
                 app.msg("Logo Saved"); app.loadOwner(app.user);
             },
