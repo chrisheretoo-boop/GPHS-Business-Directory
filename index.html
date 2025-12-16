@@ -373,7 +373,7 @@
             },
 
             // New helper to compress images for database storage (No Bucket Needed)
-            compress: (file) => {
+            compress: (file, isLogo = false) => {
                 return new Promise((resolve) => {
                     const reader = new FileReader();
                     reader.readAsDataURL(file);
@@ -381,12 +381,17 @@
                         const img = new Image(); img.src = e.target.result;
                         img.onload = () => {
                             const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
-                            const MAX_W = 500; 
+                            // Logos smaller (300px) to save space, Photos (600px)
+                            const MAX_W = isLogo ? 300 : 600; 
                             const scale = img.width > MAX_W ? MAX_W / img.width : 1;
                             canvas.width = img.width * scale; canvas.height = img.height * scale;
                             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                            const type = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
-                            resolve(canvas.toDataURL(type, 0.7));
+                            
+                            // Force JPEG for non-logos to prevent 1MB limit errors
+                            // Only allow PNG for logos (transparency)
+                            const type = (isLogo && file.type === 'image/png') ? 'image/png' : 'image/jpeg';
+                            const quality = isLogo ? 0.8 : 0.6;
+                            resolve(canvas.toDataURL(type, quality));
                         };
                     };
                 });
@@ -482,10 +487,10 @@
                     if(files.length > 0 || logoFile || ownerFile) app.msg("Processing images...", "good");
                     
                     if(files.length > 0) {
-                        for(let i=0; i<files.length; i++) imgs.push(await app.compress(files[i]));
+                        for(let i=0; i<files.length; i++) imgs.push(await app.compress(files[i], false));
                     }
-                    if(logoFile) logoUrl = await app.compress(logoFile);
-                    if(ownerFile) ownerUrl = await app.compress(ownerFile);
+                    if(logoFile) logoUrl = await app.compress(logoFile, true);
+                    if(ownerFile) ownerUrl = await app.compress(ownerFile, false);
 
                     // --- PAYMENT / CODE LOGIC ---
                     let subEnd = 0; // Default: Expired/Unpaid
@@ -769,7 +774,7 @@
                 const file = document.getElementById("dashLogo").files[0];
                 if(!file) return app.msg("Select a file", "bad");
                 app.msg("Uploading...", "good");
-                const url = await app.compress(file);
+                const url = await app.compress(file, true);
                 await updateDoc(doc(app.db, "applications", id), { logo: url });
                 app.msg("Logo Saved"); app.loadOwner(app.user);
             },
@@ -783,7 +788,7 @@
                 const file = document.getElementById("dashOwnerImg").files[0];
                 if(!file) return app.msg("Select a file", "bad");
                 app.msg("Uploading...", "good");
-                const url = await app.compress(file);
+                const url = await app.compress(file, false);
                 await updateDoc(doc(app.db, "applications", id), { ownerImg: url });
                 app.msg("Photo Saved"); app.loadOwner(app.user);
             },
@@ -793,7 +798,7 @@
                 if(files.length === 0) return app.msg("Select files", "bad");
                 app.msg("Uploading...", "good");
                 let newImgs = [];
-                for(let i=0; i<files.length; i++) newImgs.push(await app.compress(files[i]));
+                for(let i=0; i<files.length; i++) newImgs.push(await app.compress(files[i], false));
                 await updateDoc(doc(app.db, "applications", id), { images: arrayUnion(...newImgs) });
                 app.msg("Images Added"); app.loadOwner(app.user);
             },
