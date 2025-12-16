@@ -381,10 +381,12 @@
                         const img = new Image(); img.src = e.target.result;
                         img.onload = () => {
                             const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
-                            const MAX_W = 500; const scale = MAX_W / img.width; // Resize to 500px width
-                            canvas.width = MAX_W; canvas.height = img.height * scale;
+                            const MAX_W = 500; 
+                            const scale = img.width > MAX_W ? MAX_W / img.width : 1;
+                            canvas.width = img.width * scale; canvas.height = img.height * scale;
                             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                            resolve(canvas.toDataURL('image/jpeg', 0.6)); // Compress to 60% quality
+                            const type = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+                            resolve(canvas.toDataURL(type, 0.7));
                         };
                     };
                 });
