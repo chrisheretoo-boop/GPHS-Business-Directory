@@ -272,7 +272,7 @@
     
     <div id="m-reg" class="modal"><div class="modal-box"><div class="modal-header"><span class="modal-title">NEW SHOP</span><button onclick="app.closeM('m-reg')" class="btn btn-outline" style="border:none">✕</button></div><div class="modal-body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>User</label><input type="text" id="regUser"></div><div><label>Pass</label><input type="password" id="regPass"></div></div><label>Business Name</label><input type="text" id="regName"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Location</label><input type="text" id="regLoc" placeholder="e.g. Cafeteria"></div><div><label>Hours</label><input type="text" id="regHours" placeholder="e.g. Lunch Only"></div></div><label>Desc</label><textarea id="regDesc"></textarea><label>Price</label><input type="text" id="regPrice"><label>Payment Methods</label><input type="text" id="regPay" placeholder="e.g. Cash, Venmo, CashApp"><div style="border-top:1px solid #333; padding-top:10px; margin:10px 0"><label style="color:var(--primary)">MEET THE OWNER</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Full Name</label><input type="text" id="regOwnerName"></div><div><label>Photo</label><input type="file" id="regOwnerImg" accept="image/*"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Position</label><input type="text" id="regOwnerPos" placeholder="e.g. Founder"></div><div><label>Social/Email</label><input type="text" id="regOwnerContact" placeholder="e.g. @insta"></div></div><label>Bio</label><textarea id="regOwnerBio" placeholder="Tell us about yourself..."></textarea></div><label>Logo (Optional)</label><input type="file" id="regLogo" accept="image/*"><label>Images (Select Multiple)</label><input type="file" id="regImg" accept="image/*" multiple><div style="background:#222; padding:10px; border-radius:4px; margin:10px 0; border:1px solid #444"><label style="color:white">ACCESS CODE (For Cash/Prepaid)</label><input type="text" id="regCode" placeholder="Enter code to skip payment" style="margin-bottom:0"></div><button class="btn btn-primary" style="width:100%" onclick="app.reg()">REGISTER & PAY</button></div></div></div>
 
-    <div id="m-edit" class="modal"><div class="modal-box"><div class="modal-header"><span class="modal-title">MANAGE</span><button onclick="app.closeM('m-edit')" class="btn btn-outline" style="border:none">✕</button></div><div class="modal-body"><input type="hidden" id="eid"><label>Name</label><input type="text" id="ename"><label>Category</label><input list="cat-list" id="ecat" placeholder="Select or Type..."><datalist id="cat-list"><option value="General"><option value="Food & Drink"><option value="Services"><option value="Clothing"><option value="Technology"><option value="Art & Design"><option value="Entertainment"></datalist><label>Desc</label><textarea id="edesc"></textarea><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Price</label><input type="text" id="eprice"></div><div><label>Contact</label><input type="text" id="esoc"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px; margin-top:10px"><div><label>Location</label><input type="text" id="eLoc"></div><div><label>Hours</label><input type="text" id="eHours"></div></div><label>Payment Methods</label><input type="text" id="ePay" placeholder="e.g. Cash, Venmo"><div style="border-top:1px solid #333; padding-top:10px; margin:10px 0"><label style="color:var(--primary)">OWNER PROFILE</label><label>Full Name</label><input type="text" id="eOwnerName"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Position</label><input type="text" id="eOwnerPos"></div><div><label>Social/Email</label><input type="text" id="eOwnerContact"></div></div><label>Bio</label><textarea id="eOwnerBio"></textarea></div><div id="admin-tools" style="display:none; border-top:1px solid #333; padding-top:15px; margin-top:10px;"><label style="color:var(--primary)">SUBSCRIPTION</label><div style="display:flex; gap:10px;"><input type="number" id="timeDays" value="7" style="width:60px; margin:0;"><button class="btn btn-primary" onclick="app.modTime(1)">Add</button><button class="btn btn-danger" onclick="app.modTime(-1)">Remove</button></div></div><div id="edit-btns" style="margin-top:20px; display:flex; gap:10px;"></div></div></div></div>
+    <div id="m-edit" class="modal"><div class="modal-box"><div class="modal-header"><span class="modal-title">MANAGE</span><button onclick="app.closeM('m-edit')" class="btn btn-outline" style="border:none">✕</button></div><div class="modal-body"><input type="hidden" id="eid"><label>Name</label><input type="text" id="ename"><label>Category</label><input list="cat-list" id="ecat" placeholder="Select or Type..."><datalist id="cat-list"><option value="General"><option value="Food & Drink"><option value="Services"><option value="Clothing"><option value="Technology"><option value="Art & Design"><option value="Entertainment"></datalist><label>Desc</label><textarea id="edesc"></textarea><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Price</label><input type="text" id="eprice"></div><div><label>Contact</label><input type="text" id="esoc"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px; margin-top:10px"><div><label>Location</label><input type="text" id="eLoc"></div><div><label>Hours</label><input type="text" id="eHours"></div></div><label>Payment Methods</label><input type="text" id="ePay" placeholder="e.g. Cash, Venmo"><div style="border-top:1px solid #333; padding-top:10px; margin:10px 0"><label style="color:var(--primary)">OWNER PROFILE</label><label>Full Name</label><input type="text" id="eOwnerName"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Position</label><input type="text" id="eOwnerPos"></div><div><label>Social/Email</label><input type="text" id="eOwnerContact"></div></div><label>Bio</label><textarea id="eOwnerBio"></textarea></div><div id="admin-tools" style="display:none; border-top:1px solid #333; padding-top:15px; margin-top:10px;"><label style="color:var(--primary)">SUBSCRIPTION</label><div style="display:flex; gap:10px; margin-bottom:10px;"><input type="number" id="timeDays" value="7" style="width:60px; margin:0;"><button class="btn btn-primary" onclick="app.modTime(1)">Add</button><button class="btn btn-danger" onclick="app.modTime(-1)">Remove</button></div><label style="color:var(--primary)">IMAGES</label><div id="admin-img-list"></div></div><div id="edit-btns" style="margin-top:20px; display:flex; gap:10px;"></div></div></div></div>
 
     <div id="m-prof" class="modal"><div class="modal-box" style="max-height:90vh; overflow-y:auto; overscroll-behavior: contain;"><div style="position:relative"><button onclick="app.closeM('m-prof')" style="position:absolute; top:15px; right:15px; background:rgba(0,0,0,0.5); color:white; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; z-index:20">✕</button><div id="prof-c"></div></div></div></div>
 
@@ -551,6 +551,7 @@
                     app.cache[doc.id] = d;
                     app.publicList.push(d);
                 });
+                app.publicList.sort((a,b) => (b.weeklyViews||0) - (a.weeklyViews||0));
                 
                 app.renderGrid(app.publicList);
                 app.loadFeatured();
@@ -566,10 +567,11 @@
                         `<div class="card-img-box"><img src="${img}" class="card-img" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'card-placeholder\\'><i class=\\'fa-solid fa-store\\'></i></div>'"></div>` : 
                         `<div class="card-img-box"><div class="card-placeholder"><i class="fa-solid fa-store"></i></div></div>`;
 
+                    const feat = (d.weeklyViews && d.weeklyViews >= 999999) ? `<div style="position:absolute;top:0;left:0;width:100%;background:var(--primary);color:black;font-weight:800;text-align:center;font-family:'Teko';font-size:1.2rem;z-index:10">FEATURED</div>` : ``;
                     const div = document.createElement("div");
                     div.className = "card";
                     div.onclick = () => app.prof(d.id);
-                    div.innerHTML = `${imgHtml}<div class="card-body"><div class="card-cat">${d.category||'Biz'}</div><h3>${d.business}</h3><p>${d.description ? d.description.substring(0,80) : 'No description.'}...</p><div class="card-foot"><span class="price">${d.price}</span><span class="view-btn">View</span></div></div>`;
+                    div.innerHTML = `${feat}${imgHtml}<div class="card-body"><div class="card-cat">${d.category||'Biz'}</div><h3>${d.business}</h3><p>${d.description ? d.description.substring(0,80) : 'No description.'}...</p><div class="card-foot"><span class="price">${d.price}</span><span class="view-btn">View</span></div></div>`;
                     g.appendChild(div);
                 });
             },
@@ -703,7 +705,8 @@
                         if(d.status === "pending") { st = "b-wait"; txt = "Pending"; }
                         if(d.subscriptionEnd && d.subscriptionEnd < now) { st = "b-dead"; txt = "Expired"; }
                         let days = d.subscriptionEnd > now ? Math.ceil((d.subscriptionEnd-now)/86400000)+"d" : "0d";
-                        t.innerHTML += `<tr><td>${d.business}</td><td>${d.owner}</td><td><span class="badge ${st}">${txt}</span></td><td>${days}</td><td><button class="btn btn-outline" style="padding:5px" onclick="app.edit('${doc.id}', true)">Edit</button></td></tr>`;
+                        const isFeat = d.weeklyViews >= 999999;
+                        t.innerHTML += `<tr><td>${d.business}</td><td>${d.owner}</td><td><span class="badge ${st}">${txt}</span><button onclick="app.feature('${doc.id}', ${!isFeat})" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:${isFeat?'gold':'#333'};margin-left:10px" title="Toggle Feature">★</button></td><td>${days}</td><td><button class="btn btn-outline" style="padding:5px" onclick="app.edit('${doc.id}', true)">Edit</button></td></tr>`;
                     });
                 } catch(e) { console.error(e); t.innerHTML = "<tr><td colspan='5'>Error loading.</td></tr>"; }
             },
@@ -754,6 +757,16 @@
 
                 const tools = document.getElementById("admin-tools"); const btns = document.getElementById("edit-btns");
                 if(isAdm) { tools.style.display="block"; btns.innerHTML=`<button class="btn btn-primary" style="flex:1" onclick="app.save(true)">Approve</button> <button class="btn btn-danger" onclick="app.del()">Delete</button>`; } 
+                if(isAdm) { 
+                    tools.style.display="block"; 
+                    const il = document.getElementById("admin-img-list");
+                    let opts = `<option value="">Select Content to Delete...</option>`;
+                    if(d.ownerImg) opts += `<option value="owner">Owner Photo</option>`;
+                    if(d.logo) opts += `<option value="logo">Business Logo</option>`;
+                    if(d.images && d.images.length > 0) d.images.forEach((_, i) => opts += `<option value="img_${i}">Image ${i+1}</option>`);
+                    il.innerHTML = `<div style="display:flex; gap:10px; margin-bottom:10px"><select id="del-content-sel" style="margin:0; flex:1">${opts}</select><button class="btn btn-danger" onclick="app.adminDelContent('${id}')">Delete</button></div><div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:5px; margin-top:5px">${(d.images||[]).map(u=>`<img src="${u}" style="width:100%;height:60px;object-fit:cover;border:1px solid #333">`).join('')}${d.logo ? `<img src="${d.logo}" style="width:100%;height:60px;object-fit:contain;border:1px solid gold" title="Logo">` : ''}${d.ownerImg ? `<img src="${d.ownerImg}" style="width:100%;height:60px;object-fit:cover;border:1px solid var(--primary)" title="Owner">` : ''}</div>`;
+                    btns.innerHTML=`<button class="btn btn-primary" style="flex:1" onclick="app.save(true)">Approve</button> <button class="btn btn-danger" onclick="app.del()">Delete Business</button>`; 
+                } 
                 else { tools.style.display="none"; btns.innerHTML=`<button class="btn btn-primary" style="flex:1" onclick="app.save(false)">Save</button>`; }
                 app.openM("m-edit");
             },
@@ -776,6 +789,14 @@
                 }
             },
 
+            adminDelContent: async (id) => {
+                const sel = document.getElementById("del-content-sel").value;
+                if(!sel) return app.msg("Select content first", "bad");
+                if(sel === "owner") await app.saveOwnerImg(id, true);
+                else if(sel === "logo") await app.delLogo(id);
+                else if(sel.startsWith("img_")) await app.delImg(id, parseInt(sel.split("_")[1]));
+            },
+
             saveLogo: async (id) => {
                 const file = document.getElementById("dashLogo").files[0];
                 if(!file) return app.msg("Select a file", "bad");
@@ -789,7 +810,8 @@
                 if(del) {
                     if(!confirm("Delete owner photo?")) return;
                     await updateDoc(doc(app.db, "applications", id), { ownerImg: "" });
-                    app.msg("Photo Deleted"); app.loadOwner(app.user); return;
+                    if(app.cache[id]) app.cache[id].ownerImg = "";
+                    app.msg("Photo Deleted"); if(app.isAdmin) app.edit(id, true); else app.loadOwner(app.user); return;
                 }
                 const file = document.getElementById("dashOwnerImg").files[0];
                 if(!file) return app.msg("Select a file", "bad");
@@ -815,6 +837,12 @@
                 const now = Date.now();
                 await updateDoc(doc(app.db, "applications", id), {subscriptionEnd: (curr<now?now:curr)+ms});
                 app.msg("Time Updated"); app.closeM("m-edit"); app.loadAdmin();
+            },
+
+            feature: async (id, val) => {
+                if(!confirm(val ? "Feature this business?" : "Un-feature?")) return;
+                await updateDoc(doc(app.db, "applications", id), { weeklyViews: val ? 999999 : 0 });
+                app.msg(val ? "Featured!" : "Un-featured"); app.loadAdmin(); app.loadPublic();
             },
 
             del: async () => { if(!confirm("Delete?")) return; await deleteDoc(doc(app.db, "applications", document.getElementById("eid").value)); app.msg("Deleted"); app.closeM("m-edit"); app.loadAdmin(); app.loadPublic(); },
